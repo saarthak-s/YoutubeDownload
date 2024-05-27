@@ -27,14 +27,11 @@ def downlaodVideo():
             # If selected resolution is not available, choose the maximum available resolution
             selected_stream = max(available_streams, key=lambda stream: int(stream.resolution[:-1]))
 
-        # Download the selected stream
-        filename = f"{yt.title}.mp4"
-        output_path = os.path.join("D:/YouTubeVideos", filename)
+        output_path = "D:/YouTubeVideos"
         selected_stream.download(output_path=output_path)
         print(f"Video downloaded successfully to: {output_path}")
     except Exception as e:
         print("An error occurred:", e)
-
 
 
 def on_progress(stream, chunk, bytes_remaining):
@@ -69,7 +66,7 @@ downloadButton.pack(pady=(10, 5))
 
 resolution = ["1080p", "720p", "480p", "360p"]
 resVar = ctk.StringVar()
-combobox = ttk.Combobox(frame, values=resolution, textvariable=resVar,state='readonly')
+combobox = ttk.Combobox(frame, values=resolution, textvariable=resVar, state='readonly')
 combobox.pack(pady=(10, 5))
 combobox.set("480p")
 
